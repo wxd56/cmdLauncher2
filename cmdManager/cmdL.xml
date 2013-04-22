@@ -1,0 +1,14 @@
+<cmds>
+  <item>
+    <name>myDoc</name>
+    <path></path>
+    <desc>打开我的文档文件夹</desc>
+    <args>D:\Backup\myDoc</args>
+  </item>
+  <item>
+    <name>c</name>
+    <path></path>
+    <desc>打开c:\\</desc>
+    <args>C:\</args>
+  </item>
+</cmds>
