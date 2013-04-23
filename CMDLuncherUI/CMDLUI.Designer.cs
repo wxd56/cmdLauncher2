@@ -50,13 +50,12 @@
             this.txtInputCMD.TabIndex = 1;
             this.txtInputCMD.TextChanged += new System.EventHandler(this.txtInputCMD_TextChanged);
             this.txtInputCMD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInputCMD_KeyDown);
-
             // 
             // CMDLUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 35);
+            this.ClientSize = new System.Drawing.Size(545, 30);
             this.Controls.Add(this.txtInputCMD);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

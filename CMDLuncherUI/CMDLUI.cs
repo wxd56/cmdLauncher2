@@ -14,6 +14,7 @@ namespace CMDLuncherUI
     public partial class CMDLUI : Form
     {
         private CMDManager cmdManager = CMDManagerFactory.getManager();
+        private Boolean isDelKeyDown = false; //是否按下了delete键
         public CMDLUI()
         {
             InitializeComponent();
@@ -38,9 +39,19 @@ namespace CMDLuncherUI
             String cmdName = this.txtInputCMD.Text;
             List<CMD> list =  this.cmdManager.findCmds(cmdName);
             if (list.Count > 0) {
-                this.txtInputCMD.Text = list[0].Name;
-                this.txtInputCMD.Select(cmdName.Length, list[0].Name.Length);
+               
+                if (this.isDelKeyDown)
+                {
+                    return;
+                }
+                else
+                {
+                    this.txtInputCMD.Text = list[0].Name;
+                    this.txtInputCMD.Select(cmdName.Length, list[0].Name.Length);
+                }
+                
             }
+            
         }
 
         private void txtInputCMD_KeyDown(object sender, KeyEventArgs e)
@@ -53,12 +64,26 @@ namespace CMDLuncherUI
                 if (cmd != null)
                 {
                     this.cmdManager.execCMD(cmd);
+                    this.isDelKeyDown = true;
+                    this.txtInputCMD.Clear();
+                    this.isDelKeyDown = false;
                 }
                 else
                 {
                     MessageBox.Show("没有找到命令：" + cmdName);
                 }
             }
+
+            //如果是delete键盘
+            if (e.KeyValue == 8)
+            {
+                this.isDelKeyDown = true;
+            }
+            else
+            {
+                this.isDelKeyDown = false;
+            }
+           
         }
 
         private void _Regis_HotKey()
@@ -71,6 +96,8 @@ namespace CMDLuncherUI
             {
                 this.Show();
                 this.TopMost = true;
+                this.Activate();
+                this.txtInputCMD.Focus();
             }
         }
     }
