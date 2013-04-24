@@ -47,9 +47,8 @@ namespace wxd.tool.cmdL.manager.impl
                 if (cmd.Path.Equals(String.Empty))
                 {
                     //调用默认的命令执行器来执行
-                    String currPath = System.Environment.CurrentDirectory;
-                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo(currPath + @"\cmdExecutor\defaultExec.bat");
-                    psi.Arguments = cmd.Args;
+                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("explorer.exe");
+                    psi.Arguments = "/e," + cmd.Args;
                     System.Diagnostics.Process.Start(psi);
 
                 }

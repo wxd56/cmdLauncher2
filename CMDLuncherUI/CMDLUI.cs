@@ -67,6 +67,7 @@ namespace CMDLuncherUI
                     this.isDelKeyDown = true;
                     this.txtInputCMD.Clear();
                     this.isDelKeyDown = false;
+                    this.Hide();
                 }
                 else
                 {
